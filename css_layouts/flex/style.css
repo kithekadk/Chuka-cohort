@@ -16,6 +16,7 @@
     height: 60vh;
     display: flex;
     border-radius: 10px;
+    color: white;
 }
 
 .yellow, .blue, .green{
