@@ -92,3 +92,39 @@ img{
     font-size:12px;
 }
 
+@media screen and (max-width:1150px) {
+
+    .main{
+        width: 100vw;
+        height: fit-content;
+        display: flex;
+        justify-content: center;
+        padding: 20px 0;
+        align-items: center;
+        background-color: rgb(203, 203, 203);
+    }
+    .gridcontainer{
+        width:100vw;
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .gridcontainer > div{
+        width: 450px;
+    }
+}
+
+@media screen and (max-width:1000px) {
+
+    .main{
+        width: 100vw;
+    }
+    .gridcontainer{
+        width: 90%;
+    }
+    .gridcontainer > div{
+        width: 650px;
+    }
+}
