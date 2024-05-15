@@ -105,8 +105,11 @@ function displayUsers(){
         let deleteUserbtn = document.createElement('button')
         deleteUserbtn.textContent = 'Delete'
         deleteUserbtn.addEventListener('click', ()=>{
-            users.splice(index, 1)
-            localStorage.setItem('users', JSON.stringify(users))
+
+            remainingUsersList = allUsers.splice(index, 1)
+
+            localStorage.setItem('users', JSON.stringify(allUsers))
+            
             displayUsers()
         })
 
