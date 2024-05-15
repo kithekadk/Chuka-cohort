@@ -7,6 +7,7 @@ let phonenoError = document.querySelector('#phonenoError')
 let emailError = document.querySelector('#emailError')
 
 let createUserForm = document.querySelector('.create-user-form')
+let btnsubmit = document.querySelector('.btnsubmit')
 
 let allUsers = []
 
@@ -59,6 +60,7 @@ createUserForm.addEventListener('submit', (event)=>{
 
         displayUsers()
         localStorage.removeItem('index')
+        btnsubmit.textContent= 'Create Account'
         return;
     }
 
@@ -109,7 +111,7 @@ function displayUsers(){
             remainingUsersList = allUsers.splice(index, 1)
 
             localStorage.setItem('users', JSON.stringify(allUsers))
-            
+
             displayUsers()
         })
 
@@ -117,11 +119,28 @@ function displayUsers(){
         updateUserbtn.textContent = 'Update'
         updateUserbtn.style.marginLeft = '10px'
         updateUserbtn.addEventListener('click', ()=>{
-            username.value = user.full_name
-            phone.value = user.phone_number
-            email.value = user.user_email
+            
+            
 
-            localStorage.setItem('index', index)
+            if(updateUserbtn.textContent == 'Cancel'){
+                btnsubmit.value = 'Create Account'
+                updateUserbtn.textContent = 'Update'
+
+                username.value = ''
+                phone.value = ''
+                email.value = ''
+
+                localStorage.removeItem('index')
+            }else if(updateUserbtn.textContent == 'Update'){
+                btnsubmit.value = 'Update'
+                updateUserbtn.textContent = 'Cancel'
+
+                username.value = user.full_name
+                phone.value = user.phone_number
+                email.value = user.user_email
+
+                localStorage.setItem('index', index)
+            }
 
         })
         let row = document.createElement('tr')
