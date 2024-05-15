@@ -47,6 +47,21 @@ createUserForm.addEventListener('submit', (event)=>{
         user_email: email.value.trim()
     }
 
+    index = localStorage.getItem('index')
+
+    if(index){
+        allUsers.splice(index, 1, newUser)
+        localStorage.setItem('users', JSON.stringify(allUsers))
+
+        username.value = ''
+        phone.value = ''
+        email.value = ''
+
+        displayUsers()
+        localStorage.removeItem('index')
+        return;
+    }
+
     if(user == true){
         allUsers.push(newUser)
         console.log(allUsers);
@@ -57,6 +72,7 @@ createUserForm.addEventListener('submit', (event)=>{
         phone.value = ''
         email.value = ''
 
+        
         displayUsers()
     }
 })
@@ -97,7 +113,14 @@ function displayUsers(){
         let updateUserbtn = document.createElement('button')
         updateUserbtn.textContent = 'Update'
         updateUserbtn.style.marginLeft = '10px'
+        updateUserbtn.addEventListener('click', ()=>{
+            username.value = user.full_name
+            phone.value = user.phone_number
+            email.value = user.user_email
 
+            localStorage.setItem('index', index)
+
+        })
         let row = document.createElement('tr')
         row.className = 'userdata'
 
