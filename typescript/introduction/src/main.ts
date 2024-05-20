@@ -122,5 +122,7 @@ if(typeof(value) === "string"){
     console.log(value.toUpperCase)
 }else if(typeof value === "number"){
     console.log(value);
-
 }
+
+// Adding configurations
+// We add --watch to the command 
