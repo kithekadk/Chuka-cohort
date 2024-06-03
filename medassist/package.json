@@ -1,0 +1,21 @@
+{
+  "name": "medassist",
+  "version": "1.0.0",
+  "description": "This is a project about medical assistance to organizations",
+  "main": "server.js",
+  "scripts": {
+    "build": "tsc --watch",
+    "test": ""
+  },
+  "keywords": [
+    "medassist"
+  ],
+  "author": "kithekadk",
+  "license": "ISC",
+  "dependencies": {
+    "@types/express": "^4.17.21",
+    "@types/uuid": "^9.0.8",
+    "express": "^4.19.2",
+    "uuid": "^9.0.1"
+  }
+}
