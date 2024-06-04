@@ -7,16 +7,13 @@ let addOrganization = async(req:Request, res:Response) => {
     try {
         let {name, description, profile_image} = req.body
 
-        let response = orgService.createOrganization(req.body)
+        let response = await orgService.createOrganization(req.body)
 
-        if(typeof(response) == "string"){
-            return res.json({error: response})
-        }else{
-            return res.json({
-                message: "Organization created successfully",
-                organization: response
-            })
-        }
+        console.log(response);
+        
+
+        return res.json(response)
+        
     } catch (error) {
         return res.json({
             error: error
@@ -24,13 +21,13 @@ let addOrganization = async(req:Request, res:Response) => {
     }
 }
 
-let getAllOrganizations = (req:Request, res:Response)=>{
+let getAllOrganizations = async (req:Request, res:Response)=>{
     try {
-        let organizations = orgService.fetchOrganizations()
+        let organizations = await orgService.fetchOrganizations()
 
-        return res.status(201).json({
+        return res.status(201).json(
             organizations
-        })
+        )
     } catch (error) {
         return res.json({
             error: error
@@ -38,17 +35,14 @@ let getAllOrganizations = (req:Request, res:Response)=>{
     }
 }
 
-export function getOneOrganization(req:Request, res:Response){
+export async function getOneOrganization(req:Request, res:Response){
     try {
         let {org_id} = req.params
 
-        let response = orgService.fetchOneOrganization(org_id)
+        let response = await orgService.fetchOneOrganization(org_id)
 
-        if(typeof response == "string"){
-            return res.status(404).json({error: response})
-        }else{
-            return res.status(201).json({organization: response})
-        }
+        return res.status(201).json(response)
+
     } catch (error) {
         return res.json({
             error: error
@@ -56,13 +50,13 @@ export function getOneOrganization(req:Request, res:Response){
     }
 }
 
-export function deleteAnOrganization(req:Request, res:Response){
+export async function deleteAnOrganization(req:Request, res:Response){
     try {
         let org_id = req.params.org_id
 
-        let response = orgService.deleteOrganization(org_id)
+        let response = await orgService.deleteOrganization(org_id)
 
-        return res.json({response})
+        return res.json(response)
     } catch (error) {
         return res.json({
             error: error
@@ -70,7 +64,7 @@ export function deleteAnOrganization(req:Request, res:Response){
     }
 }
 
-export function updateOrganization(req:Request, res:Response){
+export async function updateOrganization(req:Request, res:Response){
     try {
         let org_id = req.params.org_id
 
@@ -83,13 +77,10 @@ export function updateOrganization(req:Request, res:Response){
             profile_image
         }
 
-        let response = orgService.updateOrganization(org_id, organization);
-
-        if(typeof response == "string"){
-            return res.json({response})
-        }else{
-            return res.json({message: "Organization updated successfully"})
-        }
+        let response = await orgService.updateOrganization(org_id, organization);
+      
+        return res.json(response)
+        
 
     } catch (error) {
         return res.json({

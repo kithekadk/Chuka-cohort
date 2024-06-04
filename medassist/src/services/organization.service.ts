@@ -1,75 +1,100 @@
+import mssql from 'mssql'
+import lodash from 'lodash'
 import { organization } from "../interfaces/organization";
 import {v4} from 'uuid'
-let Organizations: organization[] = []
+import { sqlConfig } from '../config/sql.config';
+// let Organizations: organization[] = []
 
 export class organizationService{
 
-    createOrganization(org: organization){
-        let newOrganization:organization = {
-            id: v4(),
-            name: org.name,
-            description: org.description,
-            profile_image: org.profile_image
-        }
+    async createOrganization(org: organization){
+        let pool = await mssql.connect(sqlConfig)
 
-        if(newOrganization.name && newOrganization.description && newOrganization.profile_image){
-            Organizations.push(newOrganization);
-            return newOrganization
-        }else{
-            return "Organization was not created"
-        }
-    }
+        
+        // Organizations.push(newOrganization);
+        let result = await (await pool.request()
+        .input("id", v4())
+        .input("name", org.name)
+        .input("description", org.description)
+        .input("profile_image", org.profile_image).execute("createOrganization")).rowsAffected
 
-    updateOrganization(org_id:string, org:organization){
-        //check if organizatio exists
-        let organization_index = Organizations.findIndex(organisation=>{
-            return organisation.id == org_id
-        })
-
-        let existing_details = this.fetchOneOrganization(org_id)
-
-        console.log(existing_details);
+        console.log(result);
         
 
-        let organization ={
-            id: Organizations[organization_index].id,
-            name: org.name,
-            description: org.description,
-            profile_image: org.profile_image
-        }
-
-        if(organization_index < 0){
-            return "Organization not found"
+        if(result[0] == 1){
+            return {
+                message: "Organization created successfully"
+            }
         }else{
-            Organizations.splice(organization_index, 1, organization)
+            return {
+                error: "Unable to create organization"
+            }
+        }
+   
+    }
 
-            return organization;
+    async updateOrganization(org_id:string, org:organization){
+        let pool = await mssql.connect(sqlConfig)
+        //check if organizatio exists
+        let organizationExists = await (await pool.request().query(`SELECT * FROM Organizations WHERE id='${org_id}'`)).recordset
+
+        console.log(organizationExists);
+        
+
+        if(lodash.isEmpty(organizationExists)){
+            return {
+                error: "Organization not found"
+            }
+        }else{
+
+        let result = (await pool.request()
+        .input("id", organizationExists[0].id)
+        .input("name", org.name)
+        .input("description", org.description)
+        .input("profile_image", org.profile_image).execute("updateOrganization")).rowsAffected
+
+        if(result[0] < 1){
+            return {
+                error: "Was not able to update"
+            }
+        }else{
+            return {
+                message: "Organization updated successfully"
+            };
+        }
+                    
+    }
+    }
+
+    async fetchOrganizations(){
+        let pool = await mssql.connect(sqlConfig)
+        let response = (await pool.request().query('SELECT * FROM Organizations')).recordset
+        return {
+            organizations: response
         }
     }
 
-    fetchOrganizations(){
-        return Organizations
-    }
+    async fetchOneOrganization(org_id:string){
+        let pool = await mssql.connect(sqlConfig)
+        let response = (await pool.request().query(`SELECT * FROM Organizations WHERE id = '${org_id}'`)).recordset
 
-    fetchOneOrganization(org_id:string){
-        let organization = Organizations.filter(org => org.id == org_id)
-
-        if(organization.length == 0){
+        if(response.length < 1){
             return "No organization found"
         }else{
-            return organization;
+            return {
+                organization: response[0]
+            };
         }
     }
 
-    deleteOrganization(org_id:string){
-        let organization_index = Organizations.findIndex(organisation=>{
-            return organisation.id == org_id
-        })
+    async deleteOrganization(org_id:string){
+        let pool = await mssql.connect(sqlConfig)
+        let response = (await pool.request().query(`SELECT * FROM Organizations WHERE id = '${org_id}'`)).recordset
         
-        if(organization_index < 0){
+        if(response.length < 1){
             return "Organization not found"
         }else{
-            Organizations.splice(organization_index, 1)
+            await pool.request().query(`DELETE FROM Organizations WHERE id = '${org_id}'`)
             return "Organization deleted successfully"
         }
         

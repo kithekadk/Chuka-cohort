@@ -4,21 +4,17 @@ Content-Type: application/json
 {
     "name": "Chuka University",
     "description": "A Chuka University dispensary",
-    "profile_image":[
-        "image1", "image2"
-    ]
+    "profile_image": "image3"
 }
 
 ### Update an organization
-PUT http://localhost:5203/orgs/update/0cfb48c8-8350-4722-8d28-8ea88ce0d0b3
+PUT http://localhost:5203/orgs/update/348811eb-1139-48e6-874b-beebac822236
 Content-Type: application/json
 
 {
     "name": "Meru University",
     "description": "A Meru University hospital",
-    "profile_image":[
-        "image3", "image4"
-    ]
+    "profile_image":"image2"
 }
 
 ### Get all organization
@@ -26,10 +22,10 @@ GET http://localhost:5203/orgs/all
 Content-Type: application/json
 
 ### Get one organization
-GET http://localhost:5203/orgs/c0d7f8c2-2656-4d1a-83be-1b08426de35e
+GET http://localhost:5203/orgs/3e49c51a-c175-4524-abcc-7bc3ee924d1a
 Content-Type: application/json
 
 
 ### delete an organization
-DELETE http://localhost:5203/orgs/delete/0cfb48c8-8350-4722-8d28-8ea88ce0d0b3
+DELETE http://localhost:5203/orgs/delete/3e49c51a-c175-4524-abcc-7bc3ee924d1a
 Content-Type: application/json
