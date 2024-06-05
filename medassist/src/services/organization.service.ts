@@ -92,10 +92,14 @@ export class organizationService{
         let response = (await pool.request().query(`SELECT * FROM Organizations WHERE id = '${org_id}'`)).recordset
         
         if(response.length < 1){
-            return "Organization not found"
+            return {
+                error: "Organization not found"
+            }
         }else{
             await pool.request().query(`DELETE FROM Organizations WHERE id = '${org_id}'`)
-            return "Organization deleted successfully"
+            return {
+                message: "Organization deleted successfully"
+            }
         }
         
     }

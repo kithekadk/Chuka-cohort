@@ -1,0 +1,34 @@
+POST http://localhost:5203/orgs/create-new
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhMTI4NTkwLThlODgtNDFiZS04ZmUzLTJhZmUxMWQ4MmFjZiIsIm5hbWUiOiJBbHZpbiBEb2UiLCJlbWFpbCI6ImFsdmluQHlvcG1haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTc1NzI1OTgsImV4cCI6MTcxNzU3OTc5OH0.mmC5BSSN86YQ8lztaNfXFTE0A5dmcVway7p6fTK0p8Y
+
+{
+    "name": "Nairobi University",
+    "description": "A Nairobi University dispensary",
+    "profile_image": "image3"
+}
+
+### Update an organization
+PUT http://localhost:5203/orgs/update/348811eb-1139-48e6-874b-beebac822236
+Content-Type: application/json
+
+{
+    "name": "Meru University",
+    "description": "A Meru University hospital",
+    "profile_image":"image2"
+}
+
+### Get all organization
+GET http://localhost:5203/orgs/all
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhMTI4NTkwLThlODgtNDFiZS04ZmUzLTJhZmUxMWQ4MmFjZiIsIm5hbWUiOiJBbHZpbiBEb2UiLCJlbWFpbCI6ImFsdmluQHlvcG1haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTc1NzMwMTMsImV4cCI6MTcxNzU4MDIxM30.rZtaIT7nCsNbsU8wRdE8OJ1K-3GxqJxef1bGOp5AdCU
+
+### Get one organization
+GET http://localhost:5203/orgs/33133039-ef28-4edf-8965-4625a5e37eb8
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhMTI4NTkwLThlODgtNDFiZS04ZmUzLTJhZmUxMWQ4MmFjZiIsIm5hbWUiOiJBbHZpbiBEb2UiLCJlbWFpbCI6ImFsdmluQHlvcG1haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTc1NzMwMTMsImV4cCI6MTcxNzU4MDIxM30.rZtaIT7nCsNbsU8wRdE8OJ1K-3GxqJxef1bGOp5AdCU
+
+### delete an organization
+DELETE http://localhost:5203/orgs/delete/4fbca5a3-e567-4987-9352-bcb5e18f1af7
+Content-Type: application/json
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhMTI4NTkwLThlODgtNDFiZS04ZmUzLTJhZmUxMWQ4MmFjZiIsIm5hbWUiOiJBbHZpbiBEb2UiLCJlbWFpbCI6ImFsdmluQHlvcG1haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTc1NzMwMTMsImV4cCI6MTcxNzU4MDIxM30.rZtaIT7nCsNbsU8wRdE8OJ1K-3GxqJxef1bGOp5AdCU

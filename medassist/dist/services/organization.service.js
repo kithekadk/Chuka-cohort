@@ -99,11 +99,15 @@ class organizationService {
             let pool = yield mssql_1.default.connect(sql_config_1.sqlConfig);
             let response = (yield pool.request().query(`SELECT * FROM Organizations WHERE id = '${org_id}'`)).recordset;
             if (response.length < 1) {
-                return "Organization not found";
+                return {
+                    error: "Organization not found"
+                };
             }
             else {
                 yield pool.request().query(`DELETE FROM Organizations WHERE id = '${org_id}'`);
-                return "Organization deleted successfully";
+                return {
+                    message: "Organization deleted successfully"
+                };
             }
         });
     }

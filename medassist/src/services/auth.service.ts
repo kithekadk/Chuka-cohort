@@ -21,14 +21,14 @@ export class authService{
                 error: "user not found"
             }
         }else{
-            //check if passwords match
+            
             let hashedPassword = user[0].password
 
             //compare password
             let passwordMatches = bcrypt.compareSync(logins.password, hashedPassword)
 
             if(passwordMatches){
-                let {createdAt, name, password, ...rest } = user[0]
+                let {createdAt, password, phone_number, ...rest } = user[0]
 
                 let token = jwt.sign(rest, process.env.SECRET_KEY as string, {
                     expiresIn: '2h'
