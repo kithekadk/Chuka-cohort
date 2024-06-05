@@ -2,9 +2,9 @@ POST http://localhost:5203/users/create
 Content-Type: application/json
 
 {
-    "name": "Ivan Doe",
-    "email": "ivan@yopmail.com",
-    "phone_number":"0761319087",
+    "name": "Eric Doe",
+    "email": "ericmurigi04@gmail.com",
+    "phone_number":"0734319111",
     "password": "Pass@123"
 }
 
