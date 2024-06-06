@@ -15,7 +15,7 @@ export class userController {
 
             if(error){
                 return res.status(401).json({
-                    error: error
+                    error: error.message
                 })
             }
 
