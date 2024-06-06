@@ -3,22 +3,25 @@ import lodash from 'lodash'
 import { organization } from "../interfaces/organization";
 import {v4} from 'uuid'
 import { sqlConfig } from '../config/sql.config';
+import Connection from '../dbHelper/dbhelper';
 // let Organizations: organization[] = []
 
 export class organizationService{
 
     async createOrganization(org: organization){
-        let pool = await mssql.connect(sqlConfig)
+        // let pool = await mssql.connect(sqlConfig)
 
         
         // Organizations.push(newOrganization);
-        let result = await (await pool.request()
-        .input("id", v4())
-        .input("name", org.name)
-        .input("description", org.description)
-        .input("profile_image", org.profile_image).execute("createOrganization")).rowsAffected
+        // let result = await (await pool.request()
+        // .input("id", v4())
+        // .input("name", org.name)
+        // .input("description", org.description)
+        // .input("profile_image", org.profile_image).execute("createOrganization")).rowsAffected
 
-        console.log(result);
+        // console.log(result);
+
+        let result = (await Connection.execute("createOrganization", {id:v4(), name: org.name, description: org.description, profile_image: org.profile_image})).rowsAffected
         
 
         if(result[0] == 1){
@@ -67,8 +70,10 @@ export class organizationService{
     }
 
     async fetchOrganizations(){
-        let pool = await mssql.connect(sqlConfig)
-        let response = (await pool.request().query('SELECT * FROM Organizations')).recordset
+        // let pool = await mssql.connect(sqlConfig)
+        // let response = (await pool.request().query('SELECT * FROM Organizations')).recordset
+
+        let response = (await Connection.query('SELECT * FROM Organizations')).recordset
         return {
             organizations: response
         }

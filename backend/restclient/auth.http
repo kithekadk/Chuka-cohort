@@ -3,8 +3,8 @@ POST http://localhost:5203/auth/login
 Content-Type: application/json
 
 {
-    "email": "john@yopmail.com",
-    "password": "12345678"
+    "email": "sammymuthuurikinyua@gmail.com",
+    "password": "Pass@123"
 }
 
 

@@ -1,11 +1,11 @@
 POST http://localhost:5203/orgs/create-new
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhMTI4NTkwLThlODgtNDFiZS04ZmUzLTJhZmUxMWQ4MmFjZiIsIm5hbWUiOiJBbHZpbiBEb2UiLCJlbWFpbCI6ImFsdmluQHlvcG1haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTc1NzI1OTgsImV4cCI6MTcxNzU3OTc5OH0.mmC5BSSN86YQ8lztaNfXFTE0A5dmcVway7p6fTK0p8Y
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0NDhkMDUxLTliMGEtNGI4NS04MDIyLTYzMWQ5YmE4NjE3OCIsIm5hbWUiOiJTYW1teSBEb2UiLCJlbWFpbCI6InNhbW15bXV0aHV1cmlraW55dWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTc2NjE3NTUsImV4cCI6MTcxNzY2ODk1NX0.5hK14D7A0wV7srSdm2xPuppjU3H1GsjVj5ynAJQWGqo
 
 {
-    "name": "Nairobi University",
-    "description": "A Nairobi University dispensary",
-    "profile_image": "image3"
+    "name": "Eldoret University",
+    "description": "A Eldoret University dispensary",
+    "profile_image": "image4"
 }
 
 ### Update an organization
@@ -21,7 +21,7 @@ Content-Type: application/json
 ### Get all organization
 GET http://localhost:5203/orgs/all
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJhMTI4NTkwLThlODgtNDFiZS04ZmUzLTJhZmUxMWQ4MmFjZiIsIm5hbWUiOiJBbHZpbiBEb2UiLCJlbWFpbCI6ImFsdmluQHlvcG1haWwuY29tIiwicm9sZSI6InVzZXIiLCJpYXQiOjE3MTc1NzMwMTMsImV4cCI6MTcxNzU4MDIxM30.rZtaIT7nCsNbsU8wRdE8OJ1K-3GxqJxef1bGOp5AdCU
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjA0NDhkMDUxLTliMGEtNGI4NS04MDIyLTYzMWQ5YmE4NjE3OCIsIm5hbWUiOiJTYW1teSBEb2UiLCJlbWFpbCI6InNhbW15bXV0aHV1cmlraW55dWFAZ21haWwuY29tIiwicm9sZSI6InVzZXIiLCJpc1dlbGNvbWVkIjp0cnVlLCJpc0RlbGV0ZWQiOmZhbHNlLCJpYXQiOjE3MTc2NjE3NTUsImV4cCI6MTcxNzY2ODk1NX0.5hK14D7A0wV7srSdm2xPuppjU3H1GsjVj5ynAJQWGqo
 
 ### Get one organization
 GET http://localhost:5203/orgs/33133039-ef28-4edf-8965-4625a5e37eb8

@@ -43,4 +43,33 @@ export class userController {
         }
     }
 
+    async fetchSingleUser(req:Request, res:Response){
+        try {
+            let {user_id} = req.params
+
+            let response = await service.fetchSingleUser(user_id)
+            
+            return res.json(response)
+
+        } catch (error) {
+            return res.json({
+                error
+            })
+        }
+    }
+
+    async switchRoles(req:Request, res:Response){
+        try {
+            let {user_id} = req.body
+
+            let response = await service.switchRoles(user_id)
+
+            return res.json(response)
+        } catch (error) {
+            return res.json({
+                error
+            })
+        }
+    }
+
 }

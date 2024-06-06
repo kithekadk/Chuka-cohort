@@ -1,10 +1,10 @@
 POST http://localhost:5203/users/create 
-Content-Type: application/json
+Content-Type: application/json 
 
 {
-    "name": "Eric Doe",
-    "email": "ericmurigi04@gmail.com",
-    "phone_number":"0734319111",
+    "name": "Peter Doe",
+    "email": "mburukiganya@gmail.com",
+    "phone_number":"0734100009",
     "password": "Pass@123"
 }
 
@@ -20,3 +20,19 @@ Content-Type: application/json
     "email": "alvin@yopmail.com",
     "password": "12345678"
 }
+
+
+### SWITCH ROLES
+ 
+PUT http://localhost:5203/users/switch-role
+Content-Type: application/json
+
+{
+    "user_id": "0448d051-9b0a-4b85-8022-631d9ba86178"
+}
+
+
+### GET SINGLE USER 
+
+GET http://localhost:5203/users/0448d051-9b0a-4b85-8022-631d9ba86178
+Content-Type: application/json
