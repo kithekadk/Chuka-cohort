@@ -1,0 +1,42 @@
+BEGIN TRY
+
+BEGIN TRAN;
+
+-- CreateTable
+CREATE TABLE [dbo].[Organizations] (
+    [id] VARCHAR(255) NOT NULL,
+    [name] VARCHAR(255) NOT NULL,
+    [description] VARCHAR(255) NOT NULL,
+    [profile_image] VARCHAR(255) NOT NULL,
+    CONSTRAINT [Organizations_pkey] PRIMARY KEY CLUSTERED ([id])
+);
+
+-- CreateTable
+CREATE TABLE [dbo].[Users] (
+    [id] VARCHAR(255) NOT NULL,
+    [name] VARCHAR(255) NOT NULL,
+    [phone_number] VARCHAR(20) NOT NULL,
+    [email] VARCHAR(255) NOT NULL,
+    [password] VARCHAR(255) NOT NULL,
+    [role] VARCHAR(50) CONSTRAINT [DF__Users__role__49C3F6B7] DEFAULT 'user',
+    [createdAt] DATETIME2 NOT NULL CONSTRAINT [Users_createdAt_df] DEFAULT CURRENT_TIMESTAMP,
+    [isWelcomed] BIT CONSTRAINT [DF__Users__isWelcome__4AB81AF0] DEFAULT 0,
+    [isDeleted] BIT CONSTRAINT [DF__Users__isDeleted__4BAC3F29] DEFAULT 0,
+    CONSTRAINT [PK__Users__3213E83FF00BB899] PRIMARY KEY CLUSTERED ([id]),
+    CONSTRAINT [UQ__Users__AB6E6164C27318E9] UNIQUE NONCLUSTERED ([email]),
+    CONSTRAINT [UQ__Users__6E2DBEDEE0F54F93] UNIQUE NONCLUSTERED ([password])
+);
+
+COMMIT TRAN;
+
+END TRY
+BEGIN CATCH
+
+IF @@TRANCOUNT > 0
+BEGIN
+    ROLLBACK TRAN;
+END;
+THROW
+
+END CATCH
+

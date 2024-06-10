@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Organizations {
+  id            String @id @db.VarChar(255)
+  name          String @db.VarChar(255)
+  description   String @db.VarChar(255)
+  profile_image String @db.VarChar(255)
+}
+
+model Users {
+  id           String   @id(map: "PK__Users__3213E83FF00BB899") @db.VarChar(255)
+  name         String   @db.VarChar(255)
+  phone_number String   @db.VarChar(20)
+  email        String   @unique(map: "UQ__Users__AB6E6164C27318E9") @db.VarChar(255)
+  password     String   @unique(map: "UQ__Users__6E2DBEDEE0F54F93") @db.VarChar(255)
+  role         String?  @default("user", map: "DF__Users__role__49C3F6B7") @db.VarChar(50)
+  createdAt    String
+  isWelcomed   Boolean? @default(false, map: "DF__Users__isWelcome__4AB81AF0")
+  isDeleted    Boolean? @default(false, map: "DF__Users__isDeleted__4BAC3F29")
+}

@@ -1,4 +1,5 @@
 import mssql from 'mssql'
+import { PrismaClient } from '@prisma/client';
 import lodash from 'lodash'
 import { organization } from "../interfaces/organization";
 import {v4} from 'uuid'
@@ -7,6 +8,10 @@ import Connection from '../dbHelper/dbhelper';
 // let Organizations: organization[] = []
 
 export class organizationService{
+
+    prisma = new PrismaClient({
+        log:['error']
+    })
 
     async createOrganization(org: organization){
         // let pool = await mssql.connect(sqlConfig)
@@ -73,7 +78,9 @@ export class organizationService{
         // let pool = await mssql.connect(sqlConfig)
         // let response = (await pool.request().query('SELECT * FROM Organizations')).recordset
 
-        let response = (await Connection.query('SELECT * FROM Organizations')).recordset
+        // let response = (await Connection.query('SELECT * FROM Organizations')).recordset
+
+        let response = await this.prisma.organizations.findMany()
         return {
             organizations: response
         }
