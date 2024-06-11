@@ -1,0 +1,47 @@
+POST http://localhost:4115/user/create
+Content-Type: application/json
+
+{
+    "username":"jane",
+    "email":"janedoe@yopmail.com",
+    "password":"12345678",
+    "name":"Jane Doe",
+    "bio": "",
+    "location":"",
+    "d_o_b": "",
+    "website": "",
+    "profileImage": "",
+    "headerImage":""
+}
+
+### Update user
+PUT http://localhost:4115/user/update/7136bba5-17bb-444c-8d6f-ec3a577b5961
+Content-Type: application/json
+
+{
+    "username":"johndoe",
+    "email":"johndoe@yopmail.com",
+    "password":"12345678",
+    "name":"John Doe",
+    "bio": "",
+    "location":"",
+    "d_o_b": "",
+    "website": "",
+    "profileImage": "",
+    "headerImage":""
+}
+
+
+### VIEW ALL USERS
+GET http://localhost:4115/user/all
+Content-Type: application/json
+
+
+### VIEW ALL userS
+GET http://localhost:4115/user/single/7136bba5-17bb-444c-8d6f-ec3a577b5961
+Content-Type: application/json
+
+
+### DELETE userS
+DELETE http://localhost:4115/user/delete/d4695adb-e24e-40fc-84f3-2bdde872b843
+Content-Type: application/json
