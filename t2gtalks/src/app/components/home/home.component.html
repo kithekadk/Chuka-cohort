@@ -1,0 +1,20 @@
+<app-navbar></app-navbar>
+<p>home works!</p>
+<h2>This is in the home component</h2>
+
+<input type="text" [(ngModel)]="name" >
+<button (click)="printName()">Submit name</button>
+<input type="text" #username>
+<button (click)="getName(username.value)">getName</button>
+
+<div>
+    <p>{{title}}</p>
+    <img [src]="landingImage" alt="">
+</div>
+<div>
+    <button (click)="login()">Login</button>
+    <button>Register</button>
+</div>
+
+<input type="text" (input)="logInput($event)" id="">
+
