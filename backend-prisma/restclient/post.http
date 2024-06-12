@@ -1,0 +1,25 @@
+POST http://localhost:4115/post/create
+Content-Type: application/json
+
+{
+    "content": "Happy to announce I got a new role as a software Developer",
+    "images": [
+        "https://cdn.pixabay.com/photo/2021/08/04/13/06/software-developer-6521720_640.jpg", 
+        "https://cdn.pixabay.com/photo/2021/08/05/12/36/software-development-6523979_640.jpg"
+    ],
+    "authorId": "a5e7eef1-9acc-4d2e-a39b-b1fecf0d291d"
+}
+
+### GET USERS POSTS
+GET http://localhost:4115/post/all/a5e7eef1-9acc-4d2e-a39b-b1fecf0d291d
+Content-Type: application/json
+
+
+### DELETE POST
+DELETE http://localhost:4115/post/delete
+Content-Type: application/json
+
+{
+    "post_id":"3049c3a5-1293-456e-806b-1af96442090c",
+    "user_id":"a5e7eef1-9acc-4d2e-a39b-b1fecf0d291d"
+}
