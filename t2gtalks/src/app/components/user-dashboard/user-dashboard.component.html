@@ -1,0 +1,42 @@
+<main>
+    <div class="posts flex items-center flex-col gap-4 bg-blue-100" *ngIf="posts.length > 0">
+        <div class="post p-4 bg-blue-200" *ngFor="let post of posts">
+            <div (click)="getPostsByUser(post.authorId)">
+                <p class="w-[400px]" [ngStyle]="post.authorName == 'Erick' ? ericStyles : otherStyles">{{post.authorName}}</p>
+                <p class="w-[400px] my-2" [ngClass]="post.images ? 'font-normal' : 'font-bold'">{{post.content}}</p>
+            <!-- <div *ngIf="post.images">
+                <img  src="{{post.images[0]}}" alt="" width="200px">
+            </div> -->
+
+                @if(post.images){
+                    <img class="" src="{{post.images[0]}}" alt="" width="400px">
+                }
+            </div>
+        </div>
+    </div>
+
+    <div [ngSwitch]="authorId" >
+        <div *ngSwitchCase="'001'">
+            <div *ngFor="let post of posts">
+                @if(post.authorId == '001'){
+                    <p>{{post.content}}</p>
+                }
+            </div>
+        </div>
+        <div *ngSwitchCase="'002'">
+            <div *ngFor="let post of posts">
+                @if(post.authorId == '002'){
+                    <p>{{post.content}}</p>
+                }
+            </div>
+        </div>
+        <div *ngSwitchCase="'003'">
+            <div *ngFor="let post of posts">
+                @if(post.authorId == '003'){
+                    <p>{{post.content}}</p>
+                }
+            </div>
+        </div>
+
+    </div>
+</main>
