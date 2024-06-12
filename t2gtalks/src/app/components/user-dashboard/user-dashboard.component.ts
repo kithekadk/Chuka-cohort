@@ -1,15 +1,20 @@
 import { Component } from '@angular/core';
 import { post } from '../../interfaces/interfaces';
 import { CommonModule } from '@angular/common';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { PostService } from '../../services/post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NavbarComponent],
   templateUrl: './user-dashboard.component.html',
   styleUrl: './user-dashboard.component.css'
 })
 export class UserDashboardComponent {
+
+  constructor(private router:Router){}
 
   authorId:string=''
 
@@ -34,9 +39,17 @@ export class UserDashboardComponent {
     {id:"6", content:"After loosing the game", images:["https://cdn.pixabay.com/photo/2022/02/02/10/00/game-6988033_640.png"], authorId:"001", authorName:"Erick"},
   ]
 
+  // getPostsByUser(authorId:string){
+  //   this.authorId = authorId
+  // }
 
+  navigateToPost(index:number){
+    let item = this.posts[index]
 
-  getPostsByUser(authorId:string){
-    this.authorId = authorId
+    console.log(item.id);
+    let post_id = item.id
+
+    this.router.navigate(['posts', post_id])
+    
   }
 }

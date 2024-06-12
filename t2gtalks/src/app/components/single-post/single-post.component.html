@@ -1,0 +1,7 @@
+<div>
+    <p>{{post.authorName}}</p>
+    <p>{{post.content}}</p>
+    <div *ngIf="post.images">
+        <img src="{{post.images[0]}}" alt="">
+    </div>
+</div>

@@ -1,7 +1,10 @@
+<app-navbar></app-navbar>
+
+
 <main>
     <div class="posts flex items-center flex-col gap-4 bg-blue-100" *ngIf="posts.length > 0">
-        <div class="post p-4 bg-blue-200" *ngFor="let post of posts">
-            <div (click)="getPostsByUser(post.authorId)">
+        <div class="post p-4 bg-blue-200" *ngFor="let post of posts; let i = index;">
+            <div (click)="navigateToPost(i)">
                 <p class="w-[400px]" [ngStyle]="post.authorName == 'Erick' ? ericStyles : otherStyles">{{post.authorName}}</p>
                 <p class="w-[400px] my-2" [ngClass]="post.images ? 'font-normal' : 'font-bold'">{{post.content}}</p>
             <!-- <div *ngIf="post.images">
