@@ -1,19 +1,29 @@
 import { Injectable } from '@angular/core';
 import { post } from '../interfaces/interfaces';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PostService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
-  posts:post[]=[
-    {id:"1", content:"A professional bear guide demonstrates what to do if a bear charges at you.", authorId:"001", authorName:"Erick"},
-    {id:"2", content:"A professional developer", images:["https://cdn.pixabay.com/photo/2016/11/30/20/58/programming-1873854_640.png"], authorId:"002", authorName: "Whitney"},
-    {id:"3", content:"A professional work station", images:["https://cdn.pixabay.com/photo/2024/05/02/09/16/web-development-8734249_640.png"], authorId:"001", authorName:"Erick"},
-    {id:"4", content:"Enjoying life", images:["https://cdn.pixabay.com/photo/2016/11/29/22/04/white-male-1871449_640.jpg"], authorId:"003", authorName: "Clinton"},
-    {id:"5", content:"Life of a developer", images:["https://cdn.pixabay.com/photo/2024/05/15/20/58/developer-8764528_640.jpg"], authorId:"002", authorName: "Whitney"},
-    {id:"6", content:"After loosing the game", images:["https://cdn.pixabay.com/photo/2022/02/02/10/00/game-6988033_640.png"], authorId:"001", authorName:"Erick"},
-  ]
+  getUsersPosts(user_id:string){
+    return this.http.get<{posts:post[]}>(`http://localhost:4115/post/all/${user_id}`)
+  }
+
+  getOnePost(post_id:string){
+    return this.http.get<{post:post}>(`http://localhost:4115/post/single/${post_id}`)
+  }
+
+  getAllPost(){
+    return this.http.get<{posts:post[]}>(`http://localhost:4115/post/all`)
+  }
+
+  deletePost(post_id:string, user_id:string){
+    return this.http.delete<{message?:string, error?:string}>('http://localhost:4115/post/delete', {
+      body:{ post_id, user_id }
+    })
+  }
 }

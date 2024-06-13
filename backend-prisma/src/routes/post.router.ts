@@ -6,6 +6,8 @@ let controller = new postController()
 let post_router = Router()
 
 post_router.post('/create', controller.createPost)
+post_router.get('/all', controller.getAllPosts)
+post_router.get('/single/:post_id', controller.getOnePost)
 post_router.put('/update/:post_id', controller.updatePost)
 post_router.get('/all/:user_id', controller.viewUsersPosts)
 post_router.delete('/delete', controller.deletePost)

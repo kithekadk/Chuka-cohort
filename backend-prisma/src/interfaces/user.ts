@@ -11,3 +11,10 @@ export interface user{
     profileImage?  :string
     headerImage?   :string
 }
+
+
+export interface token_details{
+    id: string,
+    name:string,
+    email: string
+}

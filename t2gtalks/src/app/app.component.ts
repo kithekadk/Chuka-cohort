@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { UserDashboardComponent } from './components/user-dashboard/user-dashboard.component';
+import { initFlowbite } from 'flowbite';
 
 @Component({
   selector: 'app-root',
@@ -13,5 +14,8 @@ import { UserDashboardComponent } from './components/user-dashboard/user-dashboa
 export class AppComponent {
   title = 't2gtalks';
 
+  constructor(){
+    initFlowbite()
+  }
 
 }

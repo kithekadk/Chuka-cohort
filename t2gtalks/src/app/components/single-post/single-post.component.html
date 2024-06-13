@@ -1,7 +1,15 @@
 <div>
-    <p>{{post.authorName}}</p>
-    <p>{{post.content}}</p>
-    <div *ngIf="post.images">
-        <img src="{{post.images[0]}}" alt="">
+    <div>
+        <p class="w-[40vw] font-bold">{{post.id}}</p>
+        <p class="w-[40vw] my-2 mb-8" [ngClass]="post.images ? 'font-normal' : 'font-bold'">{{post.content}}</p>
+
+        @if(post.images){
+            <div class="flex gap-2" >
+                <img class="rounded-xl flex-none h-auto" *ngFor="let image of post.images" src="{{image}}" alt="" width="300px">
+            </div>
+        }
+        <br><br>
+        <hr>
     </div>
+    <br><br>
 </div>

@@ -1,0 +1,16 @@
+### LOGIN
+POST http://localhost:4115/auth/login 
+Content-Type: application/json
+
+{
+    "email": "janedoe@yopmail.com",
+    "password": "12345678"
+}
+
+
+### Check token details
+GET http://localhost:4115/auth/check-details 
+Content-Type: application/json
+token: deyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE1ZTdlZWYxLTlhY2MtNGQyZS1hMzliLWIxZmVjZjBkMjkxZCIsInVzZXJuYW1lIjoiamFuZSIsImVtYWlsIjoiamFuZWRvZUB5b3BtYWlsLmNvbSIsIm5hbWUiOiJKYW5lIERvZSIsImJpbyI6IiIsImxvY2F0aW9uIjoiIiwiZF9vX2IiOiIiLCJ3ZWJzaXRlIjoiIiwicHJvZmlsZUltYWdlIjoiIiwiaGVhZGVySW1hZ2UiOiIiLCJhY3RpdmUiOnRydWUsInVwZGF0ZWRBdCI6IjIwMjQtMDYtMTJUMTc6NTI6NTMuMjM0WiIsImlhdCI6MTcxODI2ODMxNiwiZXhwIjoxNzE4Mjc5MTE2fQ.5m7zjfhMoo6DqxDY5HBWJ-FX77TJ8-TaB2Mz8Xq1oXA
+
+

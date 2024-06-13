@@ -40,6 +40,22 @@ export class postService{
         }
     }
 
+    async ViewAllPosts(){
+        return{
+            posts: await this.prisma.post.findMany()
+        }
+    }
+
+    async getSinglePost(post_id:string){
+        return{
+            post: await this.prisma.post.findUnique({
+                where:{
+                    id:post_id
+                }
+            })
+        }
+    }
+
     async viewUserPost(user_id: string){
         return {
             posts:await this.prisma.post.findMany({

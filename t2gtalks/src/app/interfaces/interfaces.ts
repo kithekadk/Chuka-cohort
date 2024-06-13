@@ -3,5 +3,37 @@ export interface post{
     content: string,
     images?: string[],
     authorId: string,
-    authorName: string
+    createAt: string,
+    updatedAt: string
+}
+
+export interface login_details{
+    email:string,
+    password:string
+}
+
+export interface user{
+    id             :string  
+    username       :string   
+    email          :string   
+    password       :string
+    name?          :string
+    bio?           :string
+    location?      :string
+    d_o_b?         :string
+    website?       :string
+    profileImage?  :string
+    headerImage?   :string
+}
+
+export interface token_details{
+    info?:{
+        id:string,
+        username: string,
+        email: string
+        name: string
+    },
+    error?:{
+        message: string
+    }
 }

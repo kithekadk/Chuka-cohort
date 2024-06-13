@@ -55,4 +55,26 @@ export class postController{
             res.json({error})
         }
     }
+
+    async getOnePost(req:Request, res:Response){
+        try {
+            let {post_id} = req.params
+
+            let response = await service.getSinglePost(post_id)
+
+            return res.json(response)
+        } catch (error) {
+            res.json({error})
+        }
+    }
+
+    async getAllPosts(req:Request, res:Response){
+        try {
+            let response = await service.ViewAllPosts()
+
+            return res.json(response)
+        } catch (error) {
+            res.json({error})
+        }
+    }
 }

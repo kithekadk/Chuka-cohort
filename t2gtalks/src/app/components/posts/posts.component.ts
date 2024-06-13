@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { post } from '../../interfaces/interfaces';
 import { CommonModule } from '@angular/common';
-import { Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
@@ -14,16 +14,20 @@ import { NavbarComponent } from '../navbar/navbar.component';
 })
 export class PostsComponent {
 
+  user_id:string = ''
   posts:post[]=[]
 
-  constructor(private post_service:PostService, private router: Router){
+  constructor(private post_service:PostService, private router: Router, private route:ActivatedRoute){
+    this.route.params.subscribe(res=>{
+      this.user_id = res['user_id']
+    })
     this.getPosts()
   }
 
   getPosts(){
-    this.posts = this.post_service.posts
-
-    console.log(this.posts);
+    this.post_service.getUsersPosts(this.user_id).subscribe(res=>{
+      this.posts = res.posts
+    })
   }
 
   navigateToPost(index:number){
@@ -33,6 +37,16 @@ export class PostsComponent {
     let post_id = item.id
 
     this.router.navigate(['post', post_id])
+    
+  }
+
+  deletePost(post_id:string){
+    console.log();
+    
+    this.post_service.deletePost(post_id, this.user_id).subscribe(res=>{
+      console.log(res);
+      this.getPosts()
+    })
     
   }
 }

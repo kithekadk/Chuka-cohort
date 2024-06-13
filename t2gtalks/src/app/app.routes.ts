@@ -6,13 +6,18 @@ import { SinglePostComponent } from './components/single-post/single-post.compon
 import { PostsComponent } from './components/posts/posts.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { authGuard } from './guards/auth.guard';
+import { RegisterComponent } from './components/register/register.component';
+import { AllPostsComponent } from './components/all-posts/all-posts.component';
 
 export const routes: Routes = [
     {path:'', component: HomeComponent},
     {path:'home', pathMatch: 'prefix', redirectTo: ''},
     {path:'login', component: LoginComponent},
-    {path:'user', component: UserDashboardComponent, canActivate: [authGuard]},
-    {path:'posts', component: PostsComponent},
-    {path: 'post/:post_id', component: SinglePostComponent},
+    {path:'register', component: RegisterComponent},
+    {path:':user_id', component: UserDashboardComponent, canActivate: [authGuard], children:[
+        {path:'posts', component: AllPostsComponent},
+        {path: ':post_id', component: SinglePostComponent},
+        {path:'', component: PostsComponent},
+    ]},
     {path: '**', component: NotfoundComponent}
 ];

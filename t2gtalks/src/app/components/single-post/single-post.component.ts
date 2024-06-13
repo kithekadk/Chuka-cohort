@@ -25,12 +25,8 @@ export class SinglePostComponent {
   }
 
   getPost(){
-    let post_item = this.post_service.posts.filter(item=>{
-      return item.id == this.post_id
+    this.post_service.getOnePost(this.post_id).subscribe(res=>{
+      this.post = res.post
     })
-
-    this.post = post_item[0]
   }
-
-
 }
