@@ -32,6 +32,7 @@ export interface token_details{
         username: string,
         email: string
         name: string
+        role: string
     },
     error?:{
         message: string

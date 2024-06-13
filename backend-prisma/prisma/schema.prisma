@@ -25,6 +25,7 @@ model User {
   website        String?
   profileImage   String?
   headerImage    String?
+  role           String @default("user")
   active         Boolean @default(true)
   posts          Post[]
   comments       Comment[]

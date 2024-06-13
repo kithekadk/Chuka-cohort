@@ -2,10 +2,10 @@ POST http://localhost:4115/user/create
 Content-Type: application/json
 
 {
-    "username":"JaneDoe2",
-    "email":"jane@yopmail.com",
+    "username":"John Doe",
+    "email":"johndoe@yopmail.com",
     "password":"Pass@123",
-    "name":"Jane Doe2",
+    "name":"John Doe",
     "bio": "",
     "location":"",
     "d_o_b": "",

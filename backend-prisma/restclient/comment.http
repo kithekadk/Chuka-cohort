@@ -1,0 +1,23 @@
+POST http://localhost:4115/comment/new
+Content-Type: application/json
+
+{
+    "comment":"I love angular, have you tried signals",
+    "post_id":"fea51ffd-8115-491d-807c-0992d56f5982",
+    "authorId":"17236d6e-930b-4f4b-a9f2-54fafeb8ca1b"
+}
+
+###GET POST COMMENTS
+GET http://localhost:4115/comment/all-post-comments/fea51ffd-8115-491d-807c-0992d56f5982
+Content-Type: application/json
+
+
+
+### DELETE COMMENT
+DELETE http://localhost:4115/comment/delete
+Content-Type: application/json
+
+{
+    "comment_id":"88a2e19f-9545-4dba-b722-f217204a7817",
+    "commenderId":"17236d6e-930b-4f4b-a9f2-54fafeb8ca1b"
+}

@@ -8,16 +8,20 @@ import { NotfoundComponent } from './components/notfound/notfound.component';
 import { authGuard } from './guards/auth.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { AllPostsComponent } from './components/all-posts/all-posts.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 export const routes: Routes = [
-    {path:'', component: HomeComponent},
-    {path:'home', pathMatch: 'prefix', redirectTo: ''},
-    {path:'login', component: LoginComponent},
-    {path:'register', component: RegisterComponent},
-    {path:':user_id', component: UserDashboardComponent, canActivate: [authGuard], children:[
-        {path:'posts', component: AllPostsComponent},
-        {path: ':post_id', component: SinglePostComponent},
-        {path:'', component: PostsComponent},
-    ]},
-    {path: '**', component: NotfoundComponent}
+    { path: '', component: HomeComponent },
+    { path: 'home', pathMatch: 'prefix', redirectTo: '' },
+    { path: 'login', component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
+    {
+        path: ':user_id', component: UserDashboardComponent, canActivate: [authGuard], children: [
+            { path: 'posts', component: AllPostsComponent },
+            { path: ':post_id', component: SinglePostComponent },
+            { path: '', component: PostsComponent },
+        ]
+    },
+    { path: 'admin', component: AdminDashboardComponent },
+    { path: '**', component: NotfoundComponent }
 ];
