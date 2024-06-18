@@ -16,19 +16,12 @@ export class UserDashboardComponent {
   user_id:string = ''
 
   constructor(private router:Router, private route:ActivatedRoute, private postService: PostService, private authService:AuthService){
-    this.route.params.subscribe(res=>{
-      this.user_id = res['user_id']
-      
-      localStorage.setItem('user_id', this.user_id)
-    })
-
-    console.log(this.authService.isLoggedIn);
-    
+    this.user_id = localStorage.getItem('user_id') as string
   }
 
   viewUsersPost(){
     this.postService.getUsersPosts(this.user_id).subscribe(res=>{
-      
+      this.router.navigate(['home', this.user_id])
     })
   }
 

@@ -42,10 +42,12 @@ export class LoginComponent{
 
             this.authService.isLoggedIn = true
 
+            localStorage.setItem('user_id', res.info.id)
+
             setTimeout(() => {
               this.loginSuccess = false
               if(res.info?.role == 'user'){
-                this.router.navigate([res.info?.id, 'posts'])
+                this.router.navigate(['home', 'posts'])
               }else if(res.info?.role == 'admin'){
                 this.router.navigate(['admin'])
               }

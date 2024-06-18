@@ -2,8 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { NavbarComponent } from '../navbar/navbar.component';
-import { user } from '../../interfaces/interfaces';
+import { new_user, user } from '../../interfaces/interfaces';
 import { RouterLink } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +16,7 @@ import { RouterLink } from '@angular/router';
 export class RegisterComponent {
   registerUserForm!:FormGroup
 
-  constructor(private fb:FormBuilder){
+  constructor(private fb:FormBuilder, private authService: AuthService){
     this.registerUserForm = this.fb.group({
       name: ['', Validators.required],
       username: ['', Validators.required],
@@ -23,8 +24,11 @@ export class RegisterComponent {
       password: ['', [Validators.required, validatePassword()]]
     })
   }
-  registerUser(user:user){
-    console.log(user);
+  registerUser(user:new_user){
+    this.authService.createAccount(user).subscribe(res=>{
+      console.log(res);
+      
+    })
   }
 }
 

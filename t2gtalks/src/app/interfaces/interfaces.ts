@@ -1,5 +1,5 @@
-export interface post{
-    id:string,
+export interface post {
+    id: string,
     content: string,
     images?: string[],
     authorId?: string,
@@ -9,47 +9,56 @@ export interface post{
     commentsCount: number
 }
 
-export interface login_details{
-    email:string,
-    password:string
+export interface login_details {
+    email: string,
+    password: string
 }
 
-export interface user{
-    id             :string  
-    username       :string   
-    email          :string   
-    password       :string
-    name?          :string
-    bio?           :string
-    location?      :string
-    d_o_b?         :string
-    website?       :string
-    profileImage?  :string
-    headerImage?   :string
+export interface user {
+    id: string
+    username: string
+    email: string
+    password: string
+    name?: string
+    bio?: string
+    location?: string
+    d_o_b?: string
+    website?: string
+    profileImage?: string
+    headerImage?: string
 }
 
-export interface token_details{
-    info?:{
-        id:string,
+export interface new_user { 
+    name: string, 
+    username: string, 
+    email: string, 
+    password: string 
+}
+
+export interface token_details {
+    info?: {
+        id: string,
         username: string,
         email: string
         name: string
         role: string
     },
-    error?:{
+    error?: {
         message: string
     }
 }
 
-export interface comment{
-    id        :string     
-    content   :string
-    postId    :string
-    authorId  :string
+export interface comment {
+    id: string
+    content: string
+    postId: string
+    authorId: string
+    authorName: string
+    updatedAt: string
 }
 
-export interface new_comment{
-    comment:string,
-    post_id:string,
-    authorId:string
+export interface new_comment {
+    comment: string,
+    post_id: string,
+    authorId: string
 }

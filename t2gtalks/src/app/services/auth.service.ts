@@ -22,4 +22,8 @@ export class AuthService {
       }
     })
   }
+
+  createAccount(user: {name:string, username: string, email:string, password:string}){
+    return this.http.post<{message?:string, error?:string}>('http://localhost:4115/user/create', user)
+  }
 }

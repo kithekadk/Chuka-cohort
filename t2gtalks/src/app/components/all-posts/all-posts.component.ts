@@ -83,6 +83,6 @@ export class AllPostsComponent {
     console.log(item.id);
     let post_id = item.id
 
-    this.router.navigate(['post', post_id])
+    this.router.navigate(['home/post', post_id])
   }
 }

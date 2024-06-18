@@ -8,7 +8,7 @@ Content-Type: application/json
 }
 
 ###GET POST COMMENTS
-GET http://localhost:4115/comment/all-post-comments/fea51ffd-8115-491d-807c-0992d56f5982
+GET http://localhost:4115/comment/all-post-comments/3b582715-e98f-449d-a335-519874e56f53
 Content-Type: application/json
 
 

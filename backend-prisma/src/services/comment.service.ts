@@ -35,12 +35,37 @@ export class commentService{
     }
 
     async getPostComments(post_id:string){
-        return{
-            comments: await this.prisma.comment.findMany({
+        
+        let comments = await this.prisma.comment.findMany({
+            where:{
+                postId:post_id
+            }
+        })
+
+        let comments_with_author = []
+
+        for(let comment of comments){
+            let commenter = await this.prisma.user.findUnique({
                 where:{
-                    postId:post_id
+                    id: comment.authorId
                 }
             })
+
+            let formatted_comment = {
+                id: comment.id,
+                content: comment.content,
+                postId: comment.postId,
+                authorId: comment.authorId,
+                createdAt: comment.createdAt,
+                updatedAt: comment.updatedAt,
+                authorName: commenter?.name
+            }
+
+            comments_with_author.push(formatted_comment)
+        }
+
+        return{
+            comments: comments_with_author
         }
     }
 }

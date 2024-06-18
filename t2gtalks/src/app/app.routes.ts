@@ -13,15 +13,13 @@ import { CreatePostComponent } from './components/create-post/create-post.compon
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'home', pathMatch: 'prefix', redirectTo: '' },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
-    {
-        path: ':user_id', component: UserDashboardComponent, children: [
+    {path: 'home', component: UserDashboardComponent, children: [
             { path: 'posts', component: AllPostsComponent },
             { path: 'create-post', component: CreatePostComponent },
-            { path: ':post_id', component: SinglePostComponent },
-            { path: '', component: PostsComponent },
+            { path: 'post/:post_id', component: SinglePostComponent },
+            { path: ':user_id', component: PostsComponent },
         ]
     },
     { path: 'admin', component: AdminDashboardComponent },

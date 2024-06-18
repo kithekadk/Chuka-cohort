@@ -75,13 +75,28 @@ export class postService{
     }
 
     async getSinglePost(post_id:string){
-        return{
-            post: await this.prisma.post.findUnique({
-                where:{
-                    id:post_id
-                }
-            })
+        
+        let post = await this.prisma.post.findUnique({
+            where:{
+                id:post_id
+            }
+        })
+
+        let author = await this.prisma.user.findFirst({
+            where:{
+                id: post?.authorId
+            }
+        })
+
+        let author_name = author?.name
+
+        return {
+            post: {
+                ...post,
+                authorName: author_name
+            }
         }
+        
     }
 
     async viewUserPost(user_id: string){

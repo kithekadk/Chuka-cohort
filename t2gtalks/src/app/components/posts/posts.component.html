@@ -1,14 +1,14 @@
 
-<div class="w-[45vw] posts flex items-center flex-col" *ngIf="posts.length > 0">
+<div class="w-[50vw] posts flex items-center flex-col" *ngIf="posts.length > 0">
     <div class="post p-4 px-8 bg-gray-50" *ngFor="let post of posts; let i = index;">
         <div>
             <div class="flex justify-between">
-                <p class="w-[40vw] font-bold">{{post.authorName}}</p> 
+                <p class="font-bold">{{post.authorName}}</p> 
                 <button (click)="deletePost(post.id)" class="bg-red-600 p-2 text-white font-bold">Delete</button>
             </div>
 
             <div  (click)="navigateToPost(i)">
-                <p class="w-[40vw] my-2 mb-8" [ngClass]="post.images ? 'font-normal' : 'font-bold'">{{post.content}}</p>
+                <p class="my-2 mb-8" [ngClass]="post.images ? 'font-normal' : 'font-bold'">{{post.content}}</p>
         <!-- <div *ngIf="post.images">
             <img  src="{{post.images[0]}}" alt="" width="200px">
         </div> -->
@@ -25,5 +25,11 @@
         </div>
     </div>
 </div>
+
+<ng-container *ngIf="posts.length < 1">
+    <div class="w-[80vw] h-[90vh] flex justify-center items-center font-semibold">
+        No haven't posted anything yet. Post or retweet to see your activity here
+    </div>
+</ng-container>
 
 <router-outlet></router-outlet>

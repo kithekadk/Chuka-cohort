@@ -26,6 +26,8 @@ export class PostsComponent {
 
   getPosts(){
     this.post_service.getUsersPosts(this.user_id).subscribe(res=>{
+      console.log(res);
+      
       this.posts = res.posts
     })
   }
@@ -36,7 +38,7 @@ export class PostsComponent {
     console.log(item.id);
     let post_id = item.id
 
-    this.router.navigate(['post', post_id])
+    this.router.navigate(['home/post', post_id])
     
   }
 

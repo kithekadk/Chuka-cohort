@@ -1,25 +1,25 @@
-<div class="flex justify-end">
+<div class="flex justify-end fixed right-10">
     <input type="search" [(ngModel)]="searchString" placeholder="Search post">
 </div>
-<div [ngClass]="add_post ? 'opacity-50' : 'opacity-100'" class="w-[45vw] posts flex items-center flex-col" *ngIf="posts.length > 0">
-    <div class="post p-4 px-8 bg-gray-50" *ngFor="let post of posts | search: searchString; let i = index;">
-        <div>
+<div [ngClass]="add_post ? 'opacity-50' : 'opacity-100'" class="w-[50vw] mt-[50px] posts flex items-center flex-col" *ngIf="posts.length > 0">
+    <div class="post w-[50vw] p-4 px-8 bg-gray-50" *ngFor="let post of posts | search: searchString; let i = index;">
+        <div class="hover:bg-gray-200 p-2">
             <div>
-                <p class="w-[40vw] font-bold">{{post.authorName}} </p>
+                <p class=" font-bold">{{post.authorName}} </p>
                 <span>{{post.createdAt | date:'shortTime'}}</span>
             </div>
-            <p (click)="navigateToPost(i)" class="w-[40vw] my-2 mb-8"
+            <p (click)="navigateToPost(i)" class="cursor-pointer  my-2 mb-8"
                 [ngClass]="post.images ? 'font-normal' : 'font-bold'">{{post.content | sentencecase}}</p>
             <!-- <div *ngIf="post.images">
                 <img  src="{{post.images[0]}}" alt="" width="200px">
             </div> -->
 
             @if(post.images){
-            <div (click)="navigateToPost(i)" class="flex flex-wrap gap-2">
-                <img class="" *ngFor="let image of post.images" src="{{image}}" alt="" width="300px">
-            </div>
+                <div (click)="navigateToPost(i)" class="cursor-pointer flex flex-wrap gap-2">
+                    <img class="" *ngFor="let image of post.images" src="{{image}}" alt="" width="300px">
+                </div>
             }
-            
+
             <br>
             <div class="flex justify-between px-2 text-[20px]">
                 <span><i (click)="getPostIndex(i)" class="fa-solid fa-comments hover:text-blue-600 cursor-pointer"></i> <span class="text-sm ml-2">{{post.commentsCount}}</span></span>
@@ -33,6 +33,12 @@
         </div>
     </div>
 </div>
+
+<ng-container *ngIf="posts.length < 1">
+    <div class="w-[80vw] h-[90vh] flex justify-center items-center font-semibold">
+        No haven't posted anything yet. Post or retweet to see your activity here
+    </div>
+</ng-container>
 
 <!--modal to comment on a most -->
 <div id="popup-modal" tabindex="-1"
@@ -64,7 +70,7 @@
                 <form #addComment="ngForm" (ngSubmit)="comment(addComment.value)">
                     <textarea ngModel name="comment" placeholder="Post your comment" class="w-[80%] ml-[20px] border-none"></textarea>
                 
-                <div>
+                <div class="flex justify-end">
                     <button data-modal-hide="popup-modal" type="submit"
                         class="text-white bg-blue-600 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center">
                         Reply

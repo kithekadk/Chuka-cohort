@@ -1,15 +1,43 @@
-<div>
-    <div>
-        <p class="w-[40vw] font-bold">{{post.id}}</p>
-        <p class="w-[40vw] my-2 mb-8" [ngClass]="post.images ? 'font-normal' : 'font-bold'">{{post.content}}</p>
+<div class="w-[50vw]">
+    <div *ngIf="post">
+        <p class="font-bold">{{post.authorName}}</p>
+        <p class="my-2 mb-8" [ngClass]="post.images ? 'font-normal' : 'font-bold'">{{post.content}}</p>
 
         @if(post.images){
             <div class="flex gap-2" >
                 <img class="rounded-xl flex-none h-auto" *ngFor="let image of post.images" src="{{image}}" alt="" width="300px">
             </div>
         }
-        <br><br>
+        <br>
+            <div class="flex justify-between px-2 text-[20px]">
+                <span><i  class="fa-solid fa-comments hover:text-blue-600 cursor-pointer"></i> <span class="text-sm ml-2">{{commentsCount}}</span></span>
+                
+                <i class="fa-solid fa-retweet hover:text-blue-600 cursor-pointer"></i>
+                <i class="fa-regular fa-heart hover:text-red-600 cursor-pointer"></i>
+                <i class="fa-solid fa-chart-simple hover:text-blue-600 cursor-pointer"></i>
+            </div>
+            <br>
+        <hr>
+        
+    </div>
+
+    <div class="ml-6" *ngFor="let comment of comments">
+        <div class="flex mt-2">
+            <img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_640.png" class="w-[40px] h-[40px] rounded-full">
+            <div class="ml-2">
+                <h2 class="font-bold text-sm">{{comment.authorName}} - <span class="text-gray-500 font-normal">{{comment.updatedAt | date:'mediumTime'}}</span></h2>
+                <p>{{comment.content}}</p>
+            </div>
+        </div>
+        <br>
+            <div class="flex justify-left gap-32 px-2 text-[20px]">
+                <span><i  class="fa-solid fa-comments hover:text-blue-600 cursor-pointer"></i> <span class="text-sm ml-2"></span></span>
+                
+                <i class="fa-solid fa-retweet hover:text-blue-600 cursor-pointer"></i>
+                <i class="fa-regular fa-heart hover:text-red-600 cursor-pointer"></i>
+                <i class="fa-solid fa-chart-simple hover:text-blue-600 cursor-pointer"></i>
+            </div>
+            <br>
         <hr>
     </div>
-    <br><br>
 </div>
