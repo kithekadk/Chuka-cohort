@@ -8,7 +8,7 @@ export class commentService{
 
     async addComment(post_id:string, comment:string, authorId:string){
         await this.prisma.comment.create({
-            data:{
+            data:{ 
                 id: v4(),
                 content: comment,
                 postId: post_id,

@@ -20,7 +20,14 @@ export class AllPostsComponent {
   searchString:string = ''
   commentsCount!:number
 
-  constructor(private post_service:PostService, private commentService:CommentsService, private router: Router, private route:ActivatedRoute){
+  add_post:boolean =false
+
+  fetched_post!:post
+
+  comment_author_id:string = ''
+
+  constructor(private post_service:PostService, private commentService:CommentsService, private router: Router){
+    this.comment_author_id = localStorage.getItem('user_id') as string
     this.getPosts()
   }
 
@@ -30,13 +37,43 @@ export class AllPostsComponent {
       for(let post of this.posts){
         this.commentService.getPostComments(post.id).subscribe(res=>{
           
-          console.log(res.comments);
+          console.log(res.comments.length);
           
           this.commentsCount = res.comments.length
+
+          this.posts = this.posts.map((existingPost )=>{
+            if (existingPost.id === post.id) {
+              return {
+                ...existingPost,
+                commentsCount: this.commentsCount
+              };
+            }
+            return existingPost;
+
+          })
+          console.log(this.posts);
           
         })
       }
     })
+  }
+
+  getPostIndex(index:number){
+    this.fetched_post =this.posts[index]
+    this.add_post = !this.add_post
+  }
+
+  comment(value:{comment:string}){
+
+    if(this.fetched_post){
+      console.log(value.comment, this.fetched_post.id, this.comment_author_id);
+      
+      this.commentService.addComment({comment:value.comment, post_id: this.fetched_post.id, authorId: this.comment_author_id}).subscribe(res=>{
+        console.log(res);
+        
+      })
+    }
+    
   }
 
 

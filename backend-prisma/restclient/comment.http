@@ -18,6 +18,6 @@ DELETE http://localhost:4115/comment/delete
 Content-Type: application/json
 
 {
-    "comment_id":"88a2e19f-9545-4dba-b722-f217204a7817",
+    "comment_id":"50c39986-cee1-4507-8ff3-e06af18fb8fc",
     "commenderId":"17236d6e-930b-4f4b-a9f2-54fafeb8ca1b"
 }

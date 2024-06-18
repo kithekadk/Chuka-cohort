@@ -4,3 +4,4 @@ export interface comment{
     postId    :string
     authorId  :string
 }
+

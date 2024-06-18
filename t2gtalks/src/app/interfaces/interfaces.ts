@@ -6,6 +6,7 @@ export interface post{
     authorName?: string,
     createdAt?: string,
     updatedAt?: string
+    commentsCount: number
 }
 
 export interface login_details{
@@ -45,4 +46,10 @@ export interface comment{
     content   :string
     postId    :string
     authorId  :string
+}
+
+export interface new_comment{
+    comment:string,
+    post_id:string,
+    authorId:string
 }

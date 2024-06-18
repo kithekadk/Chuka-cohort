@@ -41,9 +41,37 @@ export class postService{
     }
 
     async ViewAllPosts(){
-        return{
-            posts: await this.prisma.post.findMany()
+        let posts = await this.prisma.post.findMany()
+
+        let postsWithUser = []
+
+        for(let post of posts){
+            let user = await this.prisma.user.findUnique({
+                where:{
+                    id: post.authorId
+                },
+                select:{
+                    name: true
+                }
+            })
+
+            let postWithUser = {
+                id : post.id,
+                content: post.content,
+                images: post.images,
+                authorId: post.authorId,
+                authorName: user?.name,
+                createdAt: post.createdAt,
+                updatedAt: post.updatedAt
+            }
+
+            postsWithUser.push(postWithUser)
         }
+
+        return{
+            posts: postsWithUser
+        }
+     
     }
 
     async getSinglePost(post_id:string){

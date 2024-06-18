@@ -38,7 +38,7 @@ Content-Type: application/json
 
 
 ### VIEW One user
-GET http://localhost:4115/user/single/7136bba5-17bb-444c-8d6f-ec3a577b5961
+GET http://localhost:4115/user/single/a5e7eef1-9acc-4d2e-a39b-b1fecf0d291d
 Content-Type: application/json
 
 
