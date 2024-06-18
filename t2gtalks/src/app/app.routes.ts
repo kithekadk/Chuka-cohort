@@ -9,6 +9,7 @@ import { authGuard } from './guards/auth.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { AllPostsComponent } from './components/all-posts/all-posts.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { CreatePostComponent } from './components/create-post/create-post.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -16,8 +17,9 @@ export const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     {
-        path: ':user_id', component: UserDashboardComponent, canActivate: [authGuard], children: [
+        path: ':user_id', component: UserDashboardComponent, children: [
             { path: 'posts', component: AllPostsComponent },
+            { path: 'create-post', component: CreatePostComponent },
             { path: ':post_id', component: SinglePostComponent },
             { path: '', component: PostsComponent },
         ]

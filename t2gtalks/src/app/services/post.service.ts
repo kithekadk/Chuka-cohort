@@ -9,6 +9,10 @@ export class PostService {
 
   constructor(private http:HttpClient) { }
 
+  createPost(post:post){
+    return this.http.post<{massage?:string, error?:string}>('http://localhost:4115/post/create', post)
+  }
+
   getUsersPosts(user_id:string){
     return this.http.get<{posts:post[]}>(`http://localhost:4115/post/all/${user_id}`)
   }

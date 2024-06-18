@@ -2,9 +2,10 @@ export interface post{
     id:string,
     content: string,
     images?: string[],
-    authorId: string,
-    createAt: string,
-    updatedAt: string
+    authorId?: string,
+    authorName?: string,
+    createdAt?: string,
+    updatedAt?: string
 }
 
 export interface login_details{
@@ -37,4 +38,11 @@ export interface token_details{
     error?:{
         message: string
     }
+}
+
+export interface comment{
+    id        :string     
+    content   :string
+    postId    :string
+    authorId  :string
 }

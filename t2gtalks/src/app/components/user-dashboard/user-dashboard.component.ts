@@ -18,7 +18,8 @@ export class UserDashboardComponent {
   constructor(private router:Router, private route:ActivatedRoute, private postService: PostService, private authService:AuthService){
     this.route.params.subscribe(res=>{
       this.user_id = res['user_id']
-      console.log(res);
+      
+      localStorage.setItem('user_id', this.user_id)
     })
 
     console.log(this.authService.isLoggedIn);
