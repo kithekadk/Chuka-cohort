@@ -22,7 +22,7 @@
 
             <br>
             <div class="flex justify-between px-2 text-[20px]">
-                <span><i (click)="getPostIndex(i)" class="fa-solid fa-comments hover:text-blue-600 cursor-pointer"></i> <span class="text-sm ml-2">{{post.commentsCount}}</span></span>
+                <span (click)="getPostIndex(i)"><i class="fa-solid fa-comments hover:text-blue-600 cursor-pointer"></i> <span class="text-sm ml-2">{{post.commentsCount}}</span></span>
                 
                 <i class="fa-solid fa-retweet hover:text-blue-600 cursor-pointer"></i>
                 <i class="fa-regular fa-heart hover:text-red-600 cursor-pointer"></i>

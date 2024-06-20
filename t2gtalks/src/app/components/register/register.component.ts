@@ -16,6 +16,11 @@ import { AuthService } from '../../services/auth.service';
 export class RegisterComponent {
   registerUserForm!:FormGroup
 
+  registerSuccess:boolean =false
+  registerError:boolean =false
+  error = ''
+  successmessage = ''
+
   constructor(private fb:FormBuilder, private authService: AuthService){
     this.registerUserForm = this.fb.group({
       name: ['', Validators.required],
@@ -26,7 +31,24 @@ export class RegisterComponent {
   }
   registerUser(user:new_user){
     this.authService.createAccount(user).subscribe(res=>{
-      console.log(res);
+      
+      if(res.message){
+        this.registerSuccess = true
+        this.successmessage = res.message
+        setTimeout(() => {
+          this.registerSuccess = false
+          this.successmessage = ''
+        }, 2000);
+        this.registerUserForm.reset()
+      }else{
+        this.registerError = true
+        this.error = res.error as string
+
+        setTimeout(() => {
+          this.error = ''
+          this.registerError = false
+        }, 2000);
+      }
       
     })
   }

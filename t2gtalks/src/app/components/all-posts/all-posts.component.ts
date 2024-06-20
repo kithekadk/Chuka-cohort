@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { PostService } from '../../services/post.service';
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
 import { post } from '../../interfaces/interfaces';
 import { CommonModule } from '@angular/common';
 import { SentencecasePipe } from '../../pipes/sentencecase.pipe';
 import { SearchPipe } from '../../pipes/search.pipe';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { CommentsService } from '../../services/comments.service';
 
 @Component({
@@ -16,6 +16,7 @@ import { CommentsService } from '../../services/comments.service';
   styleUrl: './all-posts.component.css'
 })
 export class AllPostsComponent {
+  @ViewChild('addComment') commentForm!: NgForm
   posts:post[]=[]
   searchString:string = ''
   commentsCount!:number
@@ -65,11 +66,13 @@ export class AllPostsComponent {
 
   comment(value:{comment:string}){
 
-    if(this.fetched_post){
-      console.log(value.comment, this.fetched_post.id, this.comment_author_id);
-      
+    if(this.fetched_post){      
       this.commentService.addComment({comment:value.comment, post_id: this.fetched_post.id, authorId: this.comment_author_id}).subscribe(res=>{
         console.log(res);
+
+        this.commentForm.reset()
+
+        this.getPosts()
         
       })
     }

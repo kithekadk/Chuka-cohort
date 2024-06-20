@@ -2,7 +2,8 @@
 
 <div class="h-[70vh] flex justify-center items-center">
   <form [formGroup]="registerUserForm" (ngSubmit)="registerUser(registerUserForm.value)" class="w-[20vw] max-w-sm mx-auto">
-
+    <div *ngIf="registerSuccess" class="flex justify-center">{{successmessage}}</div>
+    <div *ngIf="registerError" class="bg-red-200 text-center text-red-600 p-4 rounded mb-2 w-[200px]">{{error}}</div>
     <div ngModelGroup="user">
       <div class="mb-5">
         <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Full name</label>
