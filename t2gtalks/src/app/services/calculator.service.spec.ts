@@ -103,7 +103,7 @@ xdescribe('CalculatorService with Logger Spy', ()=>{
 })
 
 // USING DEPENDENCY INJECTION
-fdescribe('Destructuring the calc tests using Dependency Injection', ()=>{
+describe('Destructuring the calc tests using Dependency Injection', ()=>{
 
   let calculator: CalculatorService
   let loggerSpy:any

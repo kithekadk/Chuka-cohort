@@ -9,6 +9,12 @@ export interface post {
     commentsCount: number
 }
 
+export interface new_post{
+    content: string,
+    images?: string[],
+    authorId?: string
+}
+
 export interface login_details {
     email: string,
     password: string

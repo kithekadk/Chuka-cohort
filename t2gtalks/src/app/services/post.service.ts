@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { post } from '../interfaces/interfaces';
+import { new_post, post } from '../interfaces/interfaces';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
@@ -9,8 +9,8 @@ export class PostService {
 
   constructor(private http:HttpClient) { }
 
-  createPost(post:post){
-    return this.http.post<{massage?:string, error?:string}>('http://localhost:4115/post/create', post)
+  createPost(post:new_post){
+    return this.http.post<{message?:string, error?:string}>('http://localhost:4115/post/create', post)
   }
 
   getUsersPosts(user_id:string){

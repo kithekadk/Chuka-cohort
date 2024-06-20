@@ -100,13 +100,26 @@ export class postService{
     }
 
     async viewUserPost(user_id: string){
-        return {
-            posts:await this.prisma.post.findMany({
-                where:{
-                    authorId: user_id
-                }
-            })
+        let user = await this.prisma.user.findUnique({
+            where:{
+                id: user_id
+            }
+        })
+
+        if(user?.name){
+            return {
+                posts:await this.prisma.post.findMany({
+                    where:{
+                        authorId: user_id
+                    }
+                })
+            }
         }
+
+        return {
+            error: "User does not exist"
+        }
+        
     }
 
     async deletePost(post_id:string, user_id:string){

@@ -2,7 +2,7 @@ POST http://localhost:4115/post/create
 Content-Type: application/json
 
 {
-    "content": "Learning Angular Services",
+    "content": "Learning Testing With Jasmine on Angular",
     "images": [
         "https://cdn.pixabay.com/photo/2016/11/12/23/34/learn-1820039_640.jpg", 
         "https://cdn.pixabay.com/photo/2014/04/03/10/11/boy-310099_640.png",
@@ -32,7 +32,7 @@ GET http://localhost:4115/post/single/3b582715-e98f-449d-a335-519874e56f53
 
 
 ### GET USERS POSTS
-GET http://localhost:4115/post/all/a5e7eef1-9acc-4d2e-a39b-b1fecf0d291d
+GET http://localhost:4115/post/all/17236d6e-930b-4f4b-a9f2-54fafeb8ca1b
 Content-Type: application/json
 
 
