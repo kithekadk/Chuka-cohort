@@ -64,7 +64,6 @@ export class CreatePostComponent {
   createPost(){
     this.postService.createPost(this.createPostForm.value).subscribe(res=>{
       console.log(res);
-      
     })
   }
 }

@@ -1,10 +1,10 @@
 
-<div class="w-[50vw] posts flex items-center flex-col" *ngIf="posts.length > 0">
+<div class="w-[50vw] posts flex items-center flex-col" *ngIf="posts">
     <div class="post p-4 px-8 bg-gray-50" *ngFor="let post of posts; let i = index;">
         <div>
             <div class="flex justify-between">
                 <p class="font-bold">{{post.authorName}}</p> 
-                <button (click)="deletePost(post.id)" class="bg-red-600 p-2 text-white font-bold">Delete</button>
+                <button (click)="deletePost(post.id)" class="delete bg-red-600 p-2 text-white font-bold">Delete</button>
             </div>
 
             <div  (click)="navigateToPost(i)">
@@ -26,9 +26,9 @@
     </div>
 </div>
 
-<ng-container *ngIf="posts.length < 1">
-    <div class="w-[80vw] h-[90vh] flex justify-center items-center font-semibold">
-        No haven't posted anything yet. Post or retweet to see your activity here
+<ng-container *ngIf="!posts">
+    <div class="no-post w-[80vw] h-[90vh] flex justify-center items-center font-semibold">
+        You haven't posted anything yet. Post or retweet to see your activity here
     </div>
 </ng-container>
 

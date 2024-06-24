@@ -18,17 +18,19 @@ export class PostsComponent {
   posts:post[]=[]
 
   constructor(private post_service:PostService, private router: Router, private route:ActivatedRoute){
+
     this.route.params.subscribe(res=>{
       this.user_id = res['user_id']
     })
+    
     this.getPosts()
   }
 
   getPosts(){
     this.post_service.getUsersPosts(this.user_id).subscribe(res=>{
-      console.log(res);
-      
+     
       this.posts = res.posts
+      
     })
   }
 
@@ -39,7 +41,6 @@ export class PostsComponent {
     let post_id = item.id
 
     this.router.navigate(['home/post', post_id])
-    
   }
 
   deletePost(post_id:string){
@@ -48,7 +49,6 @@ export class PostsComponent {
     this.post_service.deletePost(post_id, this.user_id).subscribe(res=>{
       console.log(res);
       this.getPosts()
-    })
-    
+    }) 
   }
 }
