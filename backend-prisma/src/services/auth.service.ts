@@ -23,9 +23,6 @@ export class authService{
             }
         }else{
 
-            console.log(user[0]);
-            
-            
             let hashedPassword = user[0].password
 
             //compare password
