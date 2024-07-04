@@ -6,7 +6,7 @@
     "start:build": "tsc -w",
     "start:run": "nodemon dist/server.js",
     "start": "concurrently npm:start:*",
-    "test": "jest --watch"
+    "test": "jest --watchAll"
   },
   "keywords": [],
   "author": "",
