@@ -1,4 +1,5 @@
-POST http://localhost:4115/user/create
+# POST http://localhost:4115/user/create
+POST https://ca-t2gtalksapi-rveojdckddxac.agreeableground-d1650c91.eastus2.azurecontainerapps.io/user/create
 Content-Type: application/json
 
 {
@@ -15,7 +16,7 @@ Content-Type: application/json
 }
 
 ### Update user
-PUT http://localhost:4115/user/update/7136bba5-17bb-444c-8d6f-ec3a577b5961
+PUT https://ca-t2gtalksapi-rveojdckddxac.agreeableground-d1650c91.eastus2.azurecontainerapps.io/user/update/7136bba5-17bb-444c-8d6f-ec3a577b5961
 Content-Type: application/json
 
 {
@@ -33,15 +34,15 @@ Content-Type: application/json
 
 
 ### VIEW ALL USERS
-GET http://localhost:4115/user/all
+GET https://ca-t2gtalksapi-rveojdckddxac.agreeableground-d1650c91.eastus2.azurecontainerapps.io/user/all
 Content-Type: application/json
 
 
 ### VIEW One user
-GET http://localhost:4115/user/single/a5e7eef1-9acc-4d2e-a39b-b1fecf0d291d
+GET https://ca-t2gtalksapi-rveojdckddxac.agreeableground-d1650c91.eastus2.azurecontainerapps.io/user/single/a5e7eef1-9acc-4d2e-a39b-b1fecf0d291d
 Content-Type: application/json
 
 
 ### DELETE user
-DELETE http://localhost:4115/user/delete/d4695adb-e24e-40fc-84f3-2bdde872b843
+DELETE https://ca-t2gtalksapi-rveojdckddxac.agreeableground-d1650c91.eastus2.azurecontainerapps.io/user/delete/d4695adb-e24e-40fc-84f3-2bdde872b843
 Content-Type: application/json

@@ -19,6 +19,10 @@ To troubleshoot any issues, see [troubleshooting](#troubleshooting).
 
 Configure environment variables for running services by updating `settings` in [main.parameters.json](./infra/main.parameters.json).
 
+#### Database connections for `t2gtalksAPI`
+
+- `POSTGRES_*` environment variables are configured in [t2gtalksAPI.bicep](./infra/app/t2gtalksAPI.bicep) to connect to the Postgres database. Modify these variables to match your application's needs.
+
 ### Configure CI/CD pipeline
 
 1. Create a workflow pipeline file locally. The following starters are available:
@@ -44,6 +48,7 @@ To describe the infrastructure and application, `azure.yaml` along with Infrastr
 Each bicep file declares resources to be provisioned. The resources are provisioned when running `azd up` or `azd provision`.
 
 - [app/t2gtalksAPI.bicep](./infra/app/t2gtalksAPI.bicep) - Azure Container Apps resources to host the 't2gtalksAPI' service.
+- [app/db-postgre.bicep](./infra/app/db-postgre.bicep) - Azure Postgres Flexible Server to host the 't2gtalks' database.
 - [shared/keyvault.bicep](./infra/shared/keyvault.bicep) - Azure KeyVault to store secrets.
 - [shared/monitoring.bicep](./infra/shared/monitoring.bicep) - Azure Log Analytics workspace and Application Insights to log and store instrumentation logs.
 - [shared/registry.bicep](./infra/shared/registry.bicep) - Azure Container Registry to store docker images.

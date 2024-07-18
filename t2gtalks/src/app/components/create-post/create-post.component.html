@@ -1,6 +1,8 @@
 <div class="h-[70vh] flex justify-center items-center">
     <form [formGroup]="createPostForm" (ngSubmit)="createPost()" class="w-[60vw] max-w-sm mx-auto">
         
+      <div *ngIf="success" class="bg-green-500 flex justify-center text-white p-4 rounded-xl mb-4">Post created successfully</div>
+      <div *ngIf="error" class="bg-red-500 flex justify-center text-white p-4 rounded-xl mb-4">{{errorMsg}}</div>
     
         <div class="mb-5">
           <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Content</label>

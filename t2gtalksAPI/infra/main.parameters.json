@@ -8,6 +8,9 @@
       "location": {
         "value": "${AZURE_LOCATION}"
       },
+      "databasePassword": {
+        "value": "$(secretOrRandomPassword ${AZURE_KEY_VAULT_NAME} databasePassword)"
+      },
       "t2gtalksAPIExists": {
         "value": "${SERVICE_T2GTALKSAPI_RESOURCE_EXISTS=false}"
       },

@@ -2,8 +2,8 @@
     <input type="search" [(ngModel)]="searchString" placeholder="Search post">
 </div>
 <div [ngClass]="add_post ? 'opacity-50' : 'opacity-100'" class="w-[50vw] mt-[50px] posts flex items-center flex-col" *ngIf="posts.length > 0">
-    <div class="post w-[50vw] p-4 px-8 bg-gray-50" *ngFor="let post of posts | search: searchString; let i = index;">
-        <div class="hover:bg-gray-200 p-2">
+    <div class="post w-[50vw] p-4 px-8 bg-gray-200" *ngFor="let post of posts | search: searchString; let i = index;">
+        <div class="hover:bg-gray-300 p-2 border-b-2 border-gray-500">
             <div>
                 <p class=" font-bold">{{post.authorName}} </p>
                 <span>{{post.createdAt | date:'shortTime'}}</span>
@@ -29,7 +29,7 @@
                 <i class="fa-solid fa-chart-simple hover:text-blue-600 cursor-pointer"></i>
             </div>
             <br>
-            <hr>
+            
         </div>
     </div>
 </div>

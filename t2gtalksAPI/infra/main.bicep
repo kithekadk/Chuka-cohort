@@ -9,6 +9,8 @@ param environmentName string
 @description('Primary location for all resources')
 param location string
 
+@secure()
+param databasePassword string
 param t2gtalksAPIExists bool
 @secure()
 param t2gtalksAPIDefinition object
@@ -89,6 +91,24 @@ module appsEnv './shared/apps-env.bicep' = {
   scope: rg
 }
 
+resource vault 'Microsoft.KeyVault/vaults@2022-07-01' existing = {
+  name: keyVault.outputs.name
+  scope: rg
+}
+
+module postgresDb './app/db-postgres.bicep' = {
+  name: 'postgresDb'
+  params: {
+    serverName: '${abbrs.dBforPostgreSQLServers}${resourceToken}'
+    location: location
+    tags: tags
+    databasePassword: databasePassword
+    keyVaultName: keyVault.outputs.name
+    allowAllIPsFirewall: true
+  }
+  scope: rg
+}
+
 module t2gtalksAPI './app/t2gtalksAPI.bicep' = {
   name: 't2gtalksAPI'
   params: {
@@ -101,6 +121,10 @@ module t2gtalksAPI './app/t2gtalksAPI.bicep' = {
     containerRegistryName: registry.outputs.name
     exists: t2gtalksAPIExists
     appDefinition: t2gtalksAPIDefinition
+    databaseName: postgresDb.outputs.databaseName
+    databaseHost: postgresDb.outputs.databaseHost
+    databaseUser: postgresDb.outputs.databaseUser
+    databasePassword: vault.getSecret(postgresDb.outputs.databaseConnectionKey)
   }
   scope: rg
 }
