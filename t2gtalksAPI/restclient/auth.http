@@ -1,5 +1,5 @@
 ### LOGIN
-POST http://localhost:4115/auth/login 
+POST http://localhost:4116/auth/login 
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 
 
 ### Check token details
-GET http://localhost:4115/auth/check-details 
+GET http://localhost:4116/auth/check-details 
 Content-Type: application/json
 token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImE1ZTdlZWYxLTlhY2MtNGQyZS1hMzliLWIxZmVjZjBkMjkxZCIsInVzZXJuYW1lIjoiamFuZSIsImVtYWlsIjoiamFuZWRvZUB5b3BtYWlsLmNvbSIsIm5hbWUiOiJKYW5lIERvZSIsImJpbyI6IiIsImxvY2F0aW9uIjoiIiwiZF9vX2IiOiIiLCJ3ZWJzaXRlIjoiIiwicHJvZmlsZUltYWdlIjoiIiwiaGVhZGVySW1hZ2UiOiIiLCJyb2xlIjoidXNlciIsImFjdGl2ZSI6dHJ1ZSwidXBkYXRlZEF0IjoiMjAyNC0wNi0xMlQxNzo1Mjo1My4yMzRaIiwiaWF0IjoxNzE5MjE1MDYxLCJleHAiOjE3MTkyMjU4NjF9.3H4-E52LrkHYVfdnHnj4w6F8UWtav7wmXDVYPgGU1j0
 

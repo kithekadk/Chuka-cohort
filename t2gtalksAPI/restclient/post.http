@@ -1,4 +1,4 @@
-POST http://localhost:4115/post/create
+POST http://localhost:4116/post/create
 Content-Type: application/json
 
 {
@@ -12,7 +12,7 @@ Content-Type: application/json
 }
 
 ### EDIT POST
-PUT http://localhost:4115/post/update/3b582715-e98f-449d-a335-519874e56f53
+PUT http://localhost:4116/post/update/3b582715-e98f-449d-a335-519874e56f53
 Content-Type: application/json
 
 {
@@ -25,19 +25,19 @@ Content-Type: application/json
 
 
 ### GET USERS POSTS
-GET http://localhost:4115/post/all
+GET http://localhost:4116/post/all
 
 ### GET SINGLE POST
-GET http://localhost:4115/post/single/3b582715-e98f-449d-a335-519874e56f53
+GET http://localhost:4116/post/single/3b582715-e98f-449d-a335-519874e56f53
 
 
 ### GET USERS POSTS
-GET http://localhost:4115/post/all/a5e7eef1-9acc-4d2e-a39b-b1fecf0d291d
+GET http://localhost:4116/post/all/a5e7eef1-9acc-4d2e-a39b-b1fecf0d291d
 Content-Type: application/json
 
 
 ### DELETE POST
-DELETE http://localhost:4115/post/delete
+DELETE http://localhost:4116/post/delete
 Content-Type: application/json
 
 {
